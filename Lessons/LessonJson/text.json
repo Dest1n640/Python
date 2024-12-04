@@ -1,0 +1,51 @@
+{
+    "user1":{
+    "user_name":"Krytio",
+    "data": {
+        "hours":12,
+        "minutes":34,
+        "second":12
+    },
+    "long":"1:30:24"
+    },
+    
+    "user2":{
+        "user_name": "Semyon",
+        "data":{
+            "hours":10,
+            "minutes":12,
+            "second":10
+    },
+    "long":"1:30:40"
+    },
+
+    "user3":{
+        "user_name": "Roma",
+        "data":{
+            "hours":11,
+            "minutes":10,
+            "second":34
+    },
+    "long":"1:10:05"
+    },
+    "user4":{
+        "user_name": "Semyon",
+        "data":{
+            "hours":11,
+            "minutes":32,
+            "second":23
+    },
+    "long":"1:12:30"
+
+    },
+    "user5":{
+        "user_name": "Kirill",
+        "data":{
+            "hours":23,
+            "minutes":9,
+            "second":34
+    },
+    "long":"1:45:40"
+    }
+
+}
