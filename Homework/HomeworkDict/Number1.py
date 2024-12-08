@@ -1,56 +1,38 @@
-classes = int(input("Введите сколько всего классов: "))
-boys = int(input('Введите количество мальчиков в классах: '))
-girls = int(input('Введите количество девочек в классах: '))
+classes = int(input("Enter the number of classes: "))
+boys = int(input("Enter the total number of boys: "))
+girls = int(input("Enter the total number of girls: "))
 
-my_dict_boys = {}
-my_dict_gils = {}
+classes_data = {}
 
 boys_per_class = boys // classes
 extra_boys = boys % classes
-girl_pre_class = girls // classes
+girls_per_class = girls // classes
 extra_girls = girls % classes
 
 for i in range(1, classes + 1):
-    if i <= extra_boys:
-        my_dict_boys[i] = boys_per_class+1
-    else:
-        my_dict_boys[i] = boys_per_class
-        
-for i in range(1, classes + 1):
-    if i <= extra_girls:
-        my_dict_gils[i] = girl_pre_class+1
-    else:
-        my_dict_gils[i] = girl_pre_class
-        
+    num_boys = boys_per_class + (1 if i <= extra_boys else 0)
+    num_girls = girls_per_class + (1 if i <= extra_girls else 0)
+    classes_data[i] = (num_boys, num_girls)
 
-for key1, value1 in my_dict_boys.items():
-    print (f"Class {key1} boys {value1}")
-        
-for key2, value2 in my_dict_gils.items():
-    if value1 < value2:
-        print(f"Class {key2} where boys < than girls")
-    
-#examples classes = 10, boys = 155, girls = 160 then
-# Class 1 boys 16
-# Class 2 boys 16
-# Class 3 boys 16
-# Class 4 boys 16
-# Class 5 boys 16
-# Class 6 boys 15
-# Class 7 boys 15
-# Class 8 boys 15
-# Class 9 boys 15
-# Class 10 boys 15
-# Class 1 where boys < than girls
-# Class 2 where boys < than girls
-# Class 3 where boys < than girls
-# Class 4 where boys < than girls
-# Class 5 where boys < than girls
-# Class 6 where boys < than girls
-# Class 7 where boys < than girls
-# Class 8 where boys < than girls
-# Class 9 where boys < than girls
-# Class 10 where boys < than girls    correct
-    
-        
+sorted_classes = sorted(classes_data.items(), key=lambda x: x[1][0] / (x[1][0] + x[1][1]))
 
+print("\nClasses sorted by increasing percentage of boys:")
+for cls, (num_boys, num_girls) in sorted_classes:
+    percent_boys = (num_boys / (num_boys + num_girls)) * 100
+    print(f"Class {cls}: {percent_boys:.2f}% boys")
+
+more_boys = [cls for cls, (num_boys, num_girls) in classes_data.items() if num_boys > num_girls]
+
+print("\nClasses with more boys than girls:")
+if more_boys:
+    print(", ".join(map(str, more_boys)))
+else:
+    print("No classes with more boys than girls.")
+
+
+#exampleEnter the number of classes: 3
+#Enter the total number of boys: 10
+#Enter the total number of girls: 8
+#Enter the number of classes: 3
+#Enter the total number of boys: 10
+#Enter the total number of girls: 8
