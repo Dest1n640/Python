@@ -12,6 +12,7 @@ response = requests.get(url, params)
 if response.status_code == 200:
     js = response.json()
     img = js['url']
+    description = js.get('explanation', 'Описание не доступно')
     
     filename = os.path.basename(img)
     download = requests.get(img)
@@ -25,6 +26,8 @@ if response.status_code == 200:
     else:
         print("Возникла ошибка при загрузке картинки")
         print(f"Ссылка на изображение - {img}")
+
+    print(f"Описание фотографии - {description}")
 else:
     print("Error")
     
