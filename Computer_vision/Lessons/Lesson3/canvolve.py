@@ -1,4 +1,3 @@
-from re import sub
 import matplotlib.pyplot as plt
 import numpy as np
 from scipy.datasets import face
