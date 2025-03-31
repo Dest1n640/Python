@@ -1,0 +1,6 @@
+1,Applied Informatics
+2,Human Resource Management
+3,Advertising and Public Relations
+4,Service
+5,Tourism
+

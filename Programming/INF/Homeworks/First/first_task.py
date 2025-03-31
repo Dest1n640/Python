@@ -202,5 +202,19 @@ GROUP BY Employees.employee_ID;
 for row in cursor.fetchall():
     print(row)
 
+cursor.execute("""
+SELECT majors.name AS major_name,COUNT(students.id_student) AS student_count
+FROM students 
+JOIN majors 
+ON students.id_major = majors.id_major
+GROUP BY majors.name
+ORDER BY student_count DESC
+""")
+
+results = cursor.fetchall()
+print("Количество студентов по направлениям:")
+for row in results:
+    print(f"Направление: {row[0]}, Количество студентов: {row[1]}")
+
 connection.commit()
 connection.close()

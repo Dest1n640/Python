@@ -1,0 +1,6 @@
+1,Full-time
+2,Part-time
+3,Distance learning
+4,Evening classes
+5,Mixed format
+
