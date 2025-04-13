@@ -1,11 +1,17 @@
-import numpy as np
 import matplotlib.pyplot as plt
-from skimage.measure import regionprops, label
+import numpy as np
+from skimage.measure import perimeter, regionprops, label
 
 
 def extractor(region):
     area = region.area / region.image.size
-    return np.array([area])
+    cy, cx = region.centroid_local
+    cy /= region.image.shape[0]
+    cx /= region.image.shape[1]
+    perimeter = region.perimeter / region.image.size
+    eccen = region.eccentricity / region.image.size
+    ...
+    return np.array([area, cy, cx, perimeter, eccen])
 
 
 def norm_l1(v1, v2):
@@ -23,24 +29,46 @@ def classificator(v, templates):
     return result
 
 
-image = plt.imread("alphabet.png")[:, :, :-1]
-gray = image.mean(axis=2)
+alphabet = plt.imread("alphabet.png")[:, :, :-1]
+
+gray = alphabet.mean(axis=2)
 binary = gray > 0
 labeled = label(binary)
 regions = regionprops(labeled)
 print(len(regions))
 
-
-symbols = plt.imread("./alphabet-small.png")[:, :, :-1]
-sgray = symbols.mean(axis=2)
-sbinary = sgray < 1
-slabeled = label(sbinary)
+symbols = plt.imread("alphabet-small.png")[:, :, :-1]
+gray = symbols.mean(axis=2)
+binary = gray < 1
+slabeled = label(binary)
 sregions = regionprops(slabeled)
-print(len(sregions))
+print(len(regions))
 
+templates = {
+    "A": extractor(sregions[2]),
+    "B": extractor(sregions[3]),
+    "8": extractor(sregions[0]),
+    "0": extractor(sregions[1]),
+    "1": extractor(sregions[4]),
+    "W": extractor(sregions[5]),
+    "X": extractor(sregions[6]),
+    "*": extractor(sregions[7]),
+    "-": extractor(sregions[9]),
+    "/": extractor(sregions[8]),
+}
 
-plt.subplot(121)
-plt.imshow(symbols)
-plt.subplot(122)
-plt.imshow(image)
+print(templates)
+# for i, region in enumerate(sregions):
+#    v = extractor(region)
+#    plt.subplot(2, 5, i + 1)
+#    plt.title(classificator(v, templates))
+#    plt.imshow(region.image)
+
+result = {}
+for region in regions:
+    v = extractor(region)
+    symbols = classificator(v, templates)
+    result[symbols] = result.get(symbols, 0) + 1
+
+print(result)
 plt.show()

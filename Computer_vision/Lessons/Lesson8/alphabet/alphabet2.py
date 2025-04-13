@@ -1,6 +1,6 @@
-from os import sync
 import numpy as np
 import matplotlib.pyplot as plt
+from scipy.ndimage import binary_dilation
 from skimage.measure import label, regionprops
 from pathlib import Path
 
@@ -36,9 +36,25 @@ def recognize(region):
                 return "B"
             return "8"
         elif holes == 1:  # A, 0
-            pass
-        else:
-            pass
+            if count_vlines(region) > 0:
+                return "0"
+            return "A"
+        else:  # 1, *, /, X, W
+            if count_vlines(region) >= 3:
+                return "1"
+            else:
+                if region.eccentricity <= 0.4:
+                    return "*"
+                inv_image = ~region.image
+                inv_image = binary_dilation(inv_image, np.ones((2, 2)))
+                labeled = label(inv_image)
+                match np.max(labeled):
+                    case 2:
+                        return "/"
+                    case 4:
+                        return "X"
+                    case _:
+                        return "W"
     return "#"
 
 
