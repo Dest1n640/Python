@@ -1,4 +1,3 @@
-from enum import unique
 import matplotlib.pyplot as plt
 from skimage.measure import label, regionprops
 import numpy as np
