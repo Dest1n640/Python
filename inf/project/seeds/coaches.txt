@@ -1,0 +1,21 @@
+1,1,Xavi,Hernandez,5000000
+2,2,Carlo,Ancelotti,7500000
+3,3,Diego,Simeone,8000000
+4,4,Ernesto,Valverde,3000000
+5,5,Marcelino,García Toral,2000000
+6,6,Manuel,Pellegrini,2500000
+7,7,Rafael,Benítez,1500000
+8,8,Jagoba,Arrasate,1200000
+9,9,Andoni,Iraola,1000000
+10,10,Javier,Aguirre,900000
+11,11,Arne,Slot,7000000
+12,12,Mikel,Arteta,6500000
+13,13,Eddie,Howe,4500000
+14,14,Pep,Guardiola,12000000
+15,15,Enzo,Maresca,3500000
+16,16,Nuno,Espírito Santo,3000000
+17,17,Unai,Emery,4000000
+18,18,Marco,Silva,2500000
+19,19,Fabian,Hürzeler,1800000
+20,20,Andoni,Iraola,2000000
+

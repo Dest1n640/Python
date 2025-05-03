@@ -1,0 +1,21 @@
+1,1,Barcelona,1
+2,1,Real Madrid,2
+3,1,Atlético Madrid,3
+4,1,Athletic Bilbao,4
+5,1,Villarreal,5
+6,1,Real Betis,6
+7,1,Celta Vigo,7
+8,1,Osasuna,8
+9,1,Rayo Vallecano,9
+10,1,Mallorca,10
+11,2,Liverpool,1
+12,2,Arsenal,2
+13,2,Newcastle United,3
+14,2,Manchester City,4
+15,2,Chelsea,5
+16,2,Nottingham Forest,6
+17,2,Aston Villa,7
+18,2,Fulham,8
+19,2,Brighton & Hove Albion,9
+20,2,Bournemouth,10
+

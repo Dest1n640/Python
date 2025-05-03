@@ -1,6 +1,6 @@
 import sqlite3
 
-conn = sqlite3.connect("league.db")
+conn = sqlite3.connect("football_league.db")
 cursor = conn.cursor()
 
 # 1. League
@@ -125,4 +125,3 @@ CREATE TABLE IF NOT EXISTS Contract (
 
 conn.commit()
 conn.close()
-
