@@ -46,7 +46,6 @@ cursor.execute(
 for row in cursor.fetchall():
     print(f"{row[0]}: {row[1]} голов")
 
-# 3. Последние трансферы
 
 # 4. Статистика команд
 print("\n4. Статистика команд:")
@@ -133,10 +132,37 @@ cursor.execute("""
 for row in cursor.fetchall():
     print(f"{row[0]} ({row[1]}): до {row[2]}")
 
+# 9. Самые результативные матчи
+print("\n9. Самые результативные матчи:")
+cursor.execute("""
+    SELECT
+        m.match_date,
+        ht.name || ' - ' || at.name AS match,
+        m.home_team_score || ':' || m.away_team_score AS score,
+        (m.home_team_score + m.away_team_score) AS total_goals
+    FROM Matches m
+    JOIN Teams ht ON m.home_team_id = ht.team_id
+    JOIN Teams at ON m.away_team_id = at.team_id
+    ORDER BY total_goals DESC
+    LIMIT 10
+""")
+for i, row in enumerate(cursor.fetchall(), 1):
+    print(f"{i}. {row[0]} | {row[1]} | Счет: {row[2]} | Всего голов: {row[3]}")
 
-# 9. Клубы с высокой зарплатой
-# 10. Трансферная активность
-
+# 10. Топ команд по трофеям
+print("\n10. Топ команд по количеству трофеев:")
+cursor.execute("""
+    SELECT 
+        t.name,
+        COUNT(tr.trophy_id) as trophy_count
+    FROM Teams t
+    LEFT JOIN Trophies tr ON t.team_id = tr.team_id
+    GROUP BY t.team_id
+    ORDER BY trophy_count DESC
+    LIMIT 10
+""")
+for i, row in enumerate(cursor.fetchall(), 1):
+    print(f"{i}. {row[0]}: {row[1]} трофеев")
 
 # 11. Истекающие контракты
 end_date = (datetime.now() + timedelta(days=DAYS_RANGE)).strftime("%Y-%m-%d")
@@ -171,5 +197,20 @@ cursor.execute("""
 """)
 for i, row in enumerate(cursor.fetchall(), 1):
     print(f"{i}. {row[0]}: {row[1]} пропущено")
+
+# 13. Игроки без клуба
+print("\n13. Игроки без клуба:")
+cursor.execute("""
+    SELECT 
+        first_name || ' ' || last_name AS player,
+        contract_end_date
+    FROM Players
+    WHERE team_id IS NULL 
+    AND contract_end_date > date('now')
+    ORDER BY contract_end_date
+""")
+for row in cursor.fetchall():
+    print(f"{row[0]}: контракт до {row[1]}")
+
 
 conn.close()
