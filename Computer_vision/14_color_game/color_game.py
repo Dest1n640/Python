@@ -69,7 +69,7 @@ while capture.isOpened():
             random.shuffle(guess_colors)
             game_started = True
         else:
-            ball_cord = [x, y]
+            ...
 
     cv2.putText(
         frame,
