@@ -5,4 +5,3 @@ league_id,name,country,founded_year
 4,"Serie A","Italy",1898
 5,"Russian Premier League","Russia",2001
 6,"UEFA Champions League","Europe",1955
-

@@ -1,4 +1,4 @@
-player_id,team_id,first_name,last_name,birth_date,nationality,position_id,jersey_number,height,weight,joining_date,contract_end_date,photo_url
+player_id,team_id,first_name,last_name,birth_date,nationality,position_id,jersey_number,height,weight,joining_date,contract_end_date
 1,1,David,De Pool,1990-11-07,Spanish,1,1,1.92,76,2011-07-01,2024-06-30,
 2,1,Marcus,Rashford,1997-10-31,English,9,10,1.80,70,2015-07-01,2028-06-30,
 3,1,Bruno,Fernandes,1994-09-08,Portuguese,7,8,1.79,69,2020-01-29,2026-06-30,
@@ -165,4 +165,3 @@ player_id,team_id,first_name,last_name,birth_date,nationality,position_id,jersey
 508,8,Moussa,Diaby,1999-07-07,French,8,19,1.70,67,2023-07-22,2028-06-30,
 509,8,Leon,Bailey,1997-08-09,Jamaican,8,31,1.81,70,2021-08-04,2025-06-30,
 510,8,Ollie,Watkins,1995-12-30,English,10,11,1.80,70,2020-09-09,2028-06-30,
-

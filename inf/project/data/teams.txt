@@ -39,4 +39,3 @@ team_id,league_id,name,city,founded_year
 38,5,"FC Rostov","Rostov-on-Don",1930
 39,5,"Rubin Kazan","Kazan",1958
 40,5,"Dynamo Moscow","Moscow",1923
-

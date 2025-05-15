@@ -11,4 +11,3 @@ season_id,league_id,name,start_date,end_date,status
 10,5,"2023/2024 Russian Premier League","2023-07-21","2024-05-25","ongoing"
 11,6,"2022/2023 UEFA Champions League","2022-09-06","2023-06-10","completed"
 12,6,"2023/2024 UEFA Champions League","2023-09-19","2024-06-01","ongoing"
-

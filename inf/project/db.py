@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS Leagues (
     founded_year INTEGER
 )
 """)
-
+    
 # Teams Table
 cursor.execute("""
 CREATE TABLE IF NOT EXISTS Teams (
@@ -34,7 +34,6 @@ CREATE TABLE IF NOT EXISTS Players (
     last_name TEXT NOT NULL,
     birth_date DATE,
     nationality TEXT,
-    position TEXT NOT NULL,
     jersey_number INTEGER,
     height REAL,
     weight REAL,
